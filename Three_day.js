@@ -1,38 +1,43 @@
 // Día 3: Aventura interactiva en el mundo de la programación
 
-// 1. Elige tu área
-let area = prompt("Elige tu destino:\nEscribe 'Front' para Front-End o 'Back' para Back-End");
+// Funciones auxiliares para obtener input y mostrar alertas
+const getInput = (mensaje) => prompt(mensaje);
+const showAlert = (mensaje) => alert(mensaje);
+
+// 1. Selecciona tu área
+let area = getInput("Elige tu destino:\nEscribe 'Front' para Front-End o 'Back' para Back-End");
+area = area ? area.trim().toLowerCase() : "";
 
 let opcionTecnologia;
 
-// Validamos la elección de área y preguntamos por la tecnología
-if (area && area.toLowerCase() === "front") {
-  opcionTecnologia = prompt("¡Excelente! Has elegido Front-End.\n¿Qué quieres aprender? Escribe 'React' o 'Vue'.");
-} else if (area && area.toLowerCase() === "back") {
-  opcionTecnologia = prompt("Genial, has elegido Back-End.\n¿Qué quieres aprender? Escribe 'C#' o 'Java'.");
+if (area === "front") {
+  opcionTecnologia = getInput("¡Excelente! Has elegido Front-End.\n¿Qué quieres aprender? Escribe 'React' o 'Vue'.");
+} else if (area === "back") {
+  opcionTecnologia = getInput("Genial, has elegido Back-End.\n¿Qué quieres aprender? Escribe 'C#' o 'Java'.");
 } else {
-  alert("No elegiste un área válida. Por defecto, te asignaremos a Front-End.");
+  showAlert("No elegiste un área válida. Por defecto, te asignaremos a Front-End.");
   area = "front";
-  opcionTecnologia = prompt("¿Qué quieres aprender en Front-End? Escribe 'React' o 'Vue'.");
+  opcionTecnologia = getInput("¿Qué quieres aprender en Front-End? Escribe 'React' o 'Vue'.");
 }
 
 // 2. Elige tu futuro profesional
-let futuro = prompt("Ahora, ¿quieres especializarte en este camino o convertirte en Fullstack?\nEscribe 'especializarme' o 'fullstack'");
+let futuro = getInput("Ahora, ¿quieres especializarte en este camino o convertirte en Fullstack?\nEscribe 'especializarme' o 'fullstack'");
+futuro = futuro ? futuro.trim().toLowerCase() : "";
 
-if (futuro && futuro.toLowerCase() === "especializarme") {
-  alert("¡Buena elección! Especializarte te permitirá profundizar tus conocimientos.");
-} else if (futuro && futuro.toLowerCase() === "fullstack") {
-  alert("¡Ambicioso! Convertirte en Fullstack te abrirá muchas puertas.");
+if (futuro === "especializarme") {
+  showAlert("¡Buena elección! Especializarte te permitirá profundizar tus conocimientos.");
+} else if (futuro === "fullstack") {
+  showAlert("¡Ambicioso! Convertirte en Fullstack te abrirá muchas puertas.");
 } else {
-  alert("Respuesta no reconocida. Continuaremos con el camino elegido.");
+  showAlert("Respuesta no reconocida. Continuaremos con el camino elegido.");
 }
 
 // 3. Agrega otras tecnologías de interés
-let otraTec = prompt("¿Hay alguna otra tecnología que te gustaría aprender?\nSi es así, escríbela; si no, escribe 'no'");
+let otraTec = getInput("¿Hay alguna otra tecnología que te gustaría aprender?\nSi es así, escríbela; si no, escribe 'no'");
 
-while (otraTec && otraTec.toLowerCase() !== "no") {
-  alert("Interesante, " + otraTec + " es una excelente opción para ampliar tus horizontes.");
-  otraTec = prompt("¿Hay alguna otra tecnología que te gustaría aprender?\nSi no, escribe 'no'");
+while (otraTec && otraTec.trim().toLowerCase() !== "no") {
+  showAlert(`Interesante, "${otraTec.trim()}" es una excelente opción para ampliar tus horizontes.`);
+  otraTec = getInput("¿Hay alguna otra tecnología que te gustaría aprender?\nSi no, escribe 'no'");
 }
 
-alert("Gracias por jugar. ¡Buena suerte en tu camino de aprendizaje!");
+showAlert("Gracias por jugar. ¡Buena suerte en tu camino de aprendizaje!");
